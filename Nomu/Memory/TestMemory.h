@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Memory_Interface.h"
-#include "Constants.h"
 #include <vector>
+#include "Common/StringUtils.h"
+#include "MemoryInterface.h"
+#include "Constants.h"
 
-class TestMemory : public Memory_Interface {
+class TestMemory : public MemoryInterface {
 public:
 	std::vector<u8> ram;
 	u32 ram_cursor;
@@ -15,12 +16,12 @@ public:
 
 	inline u8 read8(u32 address) override {
 		if (address < ram.size()) return ram[address];
-		else throw std::string("Invalid read to unmapped memory : ") + std::to_string(address);
+		else throw std::invalid_argument("Invalid read to unmapped memory: " + int_to_hex(address));
 	}
 
 	inline void write8(u32 address, u8 value) override {
 		if (address < ram.size()) ram[address] = value;
-		else throw std::string("Invalid write to unmapped memory: ") + std::to_string(address);
+		else throw std::invalid_argument("Invalid write to unmapped memory: " + int_to_hex(address));
 	}
 
 	u32 allocateRam(u32 size) override {

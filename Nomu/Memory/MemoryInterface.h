@@ -3,7 +3,7 @@
 #include "Common/Common.h"
 #include <string>
 
-class Memory_Interface {
+class MemoryInterface {
 
 public:
 	inline virtual u8 read8(u32 address) = 0;

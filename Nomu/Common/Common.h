@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <stdexcept>
 
 typedef std::int8_t s8;
 typedef std::int16_t s16;

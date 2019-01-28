@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Common/Common.h"
+
 /*
 From THC
 +----------------------------+------------------------------------------------+
@@ -26,12 +28,12 @@ From THC
 */
 
 enum MemoryLayout : u32 {
-	USER_DATA_START   = 0x0040'0000,
-	USER_DATA_END     = 0x2FFF'FFFF,
-	ROM_START         = 0x5000'0000,
-	ROM_END           = 0x57FF'FFFF,
-	RAM_START         = 0x6000'0000,
-	RAM_END           = 0x7FFF'FFFF,
-	KERNEL_DATA_START = 0x8000'0000,
+	USER_DATA_START      = 0x0040'0000,
+	USER_DATA_END        = 0x2FFF'FFFF,
+	ROM_START            = 0x5000'0000,
+	ROM_END              = 0x57FF'FFFF,
+	RAM_START            = 0x6000'0000,
+	RAM_END              = 0x7FFF'FFFF,
+	KERNEL_DATA_START    = 0x8000'0000,
 	FAKE_KERNAL_DATA_END = 0x9000'0000,
 };

@@ -16,7 +16,8 @@
     <ClInclude Include="Memory\BootMemory.h" />
     <ClInclude Include="Memory\Constants.h" />
     <ClInclude Include="Memory\GageMemory.h" />
-    <ClInclude Include="Memory\Memory_Interface.h" />
     <ClInclude Include="Memory\TestMemory.h" />
+    <ClInclude Include="Common\StringUtils.h" />
+    <ClInclude Include="Memory\MemoryInterface.h" />
   </ItemGroup>
 </Project>

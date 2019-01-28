@@ -152,11 +152,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\StringUtils.h" />
     <ClInclude Include="deps\include\catch\catch.hpp" />
     <ClInclude Include="Memory\BootMemory.h" />
     <ClInclude Include="Memory\Constants.h" />
     <ClInclude Include="Memory\GageMemory.h" />
-    <ClInclude Include="Memory\Memory_Interface.h" />
+    <ClInclude Include="Memory\MemoryInterface.h" />
     <ClInclude Include="Memory\TestMemory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

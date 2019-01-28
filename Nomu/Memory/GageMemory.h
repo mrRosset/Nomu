@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Memory_Interface.h"
-#include "Constants.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include "Common/StringUtils.h"
+#include "MemoryInterface.h"
+#include "Constants.h"
 
-class GageMemory : public Memory_Interface {
+class GageMemory : public MemoryInterface {
 public:
 
 	std::vector<u8> user_data;
@@ -25,14 +26,14 @@ public:
 		if (address >= USER_DATA_START && address <= USER_DATA_END) return user_data[address - USER_DATA_START];
 		else if (address >= ROM_START && address <= ROM_END) return rom[address - ROM_START];
 		else if (address >= RAM_START && address <= RAM_END) return ram[address - RAM_START];
-		else throw (std::string("read to unmapped memory:") + std::to_string(address));
+		else throw std::invalid_argument("read to unmapped memory: " + int_to_hex(address));
 	}
 
 	inline void write8(u32 address, u8 value) override {
 		if (address >= USER_DATA_START && address <= USER_DATA_END) user_data[address - USER_DATA_START] = value;
 		else if (address >= ROM_START && address <= ROM_END) rom[address - ROM_START] = value;
 		else if (address >= RAM_START && address <= RAM_END) ram[address - RAM_START] = value;
-		else throw (std::string("write to unmapped memory:") + std::to_string(address));
+		else throw std::invalid_argument("write to unmapped memory: " + int_to_hex(address));
 	}
 
 	u32 allocateRam(u32 size) override {
@@ -45,21 +46,20 @@ public:
 		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
 
 		if (!stream) {
-			std::cerr << "Failed to open image file." << std::endl;
-			return;
+			throw std::invalid_argument("Failed to open Rom file");
 		}
 
 		u64 length = stream.tellg();
 
 		if (length > rom.size()) {
-			std::cerr << "Rom dump is too big";
+			throw std::runtime_error("Rom dump size too big");
 		}
 
 		stream.seekg(0, std::ios::beg);
 
 		if (!stream.read((char*)rom.data(), length))
 		{
-			throw std::string("Error reading bytes from file");
+			throw std::runtime_error("Error reading bytes from file");
 		}
 		stream.close();
 	}
