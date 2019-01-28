@@ -1,0 +1,6 @@
+Memory rework:
+ - Does loadRom need to be in memory ?
+ - Does allocateRam need to be in memory ?
+
+Global:
+ - Proper error management !
