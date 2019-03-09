@@ -3,7 +3,7 @@
 #include <vector>
 #include "Common/StringUtils.h"
 #include "MemoryInterface.h"
-#include "Constants.h"
+#include "MemoryConstants.h"
 
 class TestMemory : public MemoryInterface {
 public:

@@ -5,7 +5,7 @@
 #include <fstream>
 #include "Common/StringUtils.h"
 #include "MemoryInterface.h"
-#include "Constants.h"
+#include "MemoryConstants.h"
 
 class GageMemory : public MemoryInterface {
 public:

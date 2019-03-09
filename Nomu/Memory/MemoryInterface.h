@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Common/Common.h"
 #include <string>
+#include "Common/Common.h"
 
 class MemoryInterface {
 

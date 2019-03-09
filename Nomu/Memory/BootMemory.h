@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Common/StringUtils.h"
 #include "MemoryInterface.h"
-#include "Constants.h"
+#include "MemoryConstants.h"
 
 class BootMemory : public MemoryInterface {
 public:
