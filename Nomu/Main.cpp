@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Memory/GageMemory.h"
+#include "Symbols/SymbolsManager.h"
 
 int main(int argc, char *argv[])
 {
