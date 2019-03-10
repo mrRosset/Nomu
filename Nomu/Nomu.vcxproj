@@ -92,10 +92,11 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)deps\include;$(ProjectDir)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)deps\lib32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>unicorn.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -106,9 +107,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)deps\include;$(ProjectDir)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>unicorn.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)deps\lib64</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -144,6 +146,14 @@
   <ItemGroup>
     <ClCompile Include="Common\FileUtils.cpp" />
     <ClCompile Include="Common\BitUtils.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\Decoder\Decoder_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\Decoder\Decoder_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_Thumb.cpp" />
+    <ClCompile Include="CPU\Unicorn\CPUnicorn.cpp" />
     <ClCompile Include="deps\include\GL\gl3w.c" />
     <ClCompile Include="deps\include\imgui\imgui.cpp" />
     <ClCompile Include="deps\include\imgui\imgui_demo.cpp" />
@@ -161,6 +171,14 @@
     <ClInclude Include="Common\Common.h" />
     <ClInclude Include="Common\FileUtils.h" />
     <ClInclude Include="Common\StringUtils.h" />
+    <ClInclude Include="CPU\CPU_Interface.h" />
+    <ClInclude Include="CPU\Tharm\CPU.h" />
+    <ClInclude Include="CPU\Tharm\Decoder\Decoder.h" />
+    <ClInclude Include="CPU\Tharm\Decoder\IR.h" />
+    <ClInclude Include="CPU\Tharm\Disassembler\Disassembler.h" />
+    <ClInclude Include="CPU\Tharm\Registers.h" />
+    <ClInclude Include="CPU\Tharm\Utils.h" />
+    <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
     <ClInclude Include="deps\include\catch\catch.hpp" />
     <ClInclude Include="HLE\E32Image.h" />
     <ClInclude Include="HLE\E32Std.h" />

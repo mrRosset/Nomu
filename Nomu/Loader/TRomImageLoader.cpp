@@ -72,19 +72,19 @@ void TRomImageLoader::parseHeader(TRomImage& image) {
 	header.harware_variant = data32[26]; //u32
 
 	//parse flags
-	header.flags.executable_type = getBit(header.flags_raw, 0);
-	header.flags.fixed_address = getBit(header.flags_raw, 2);
+	header.flags.executable_type = getFlagBit(header.flags_raw, 0);
+	header.flags.fixed_address = getFlagBit(header.flags_raw, 2);
 	header.flags.abi = (header.flags_raw >> 3) & 0b11;
 	header.flags.entry_point_type = (header.flags_raw >> 5) & 0b111;
-	header.flags.exe_in_tree_flag = getBit(header.flags_raw, 23);
-	header.flags.data_present_flag = getBit(header.flags_raw, 24);
-	header.flags.data_init_flag = getBit(header.flags_raw, 25);
-	header.flags.data_flag = getBit(header.flags_raw, 26);
-	header.flags.secondary_flag = getBit(header.flags_raw, 27);
-	header.flags.device_flag = getBit(header.flags_raw, 28);
-	header.flags.extension_flag = getBit(header.flags_raw, 29);
-	header.flags.variant_flag = getBit(header.flags_raw, 30);
-	header.flags.primary_flag = getBit(header.flags_raw, 31);
+	header.flags.exe_in_tree_flag = getFlagBit(header.flags_raw, 23);
+	header.flags.data_present_flag = getFlagBit(header.flags_raw, 24);
+	header.flags.data_init_flag = getFlagBit(header.flags_raw, 25);
+	header.flags.data_flag = getFlagBit(header.flags_raw, 26);
+	header.flags.secondary_flag = getFlagBit(header.flags_raw, 27);
+	header.flags.device_flag = getFlagBit(header.flags_raw, 28);
+	header.flags.extension_flag = getFlagBit(header.flags_raw, 29);
+	header.flags.variant_flag = getFlagBit(header.flags_raw, 30);
+	header.flags.primary_flag = getFlagBit(header.flags_raw, 31);
 
 }
 
