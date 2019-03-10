@@ -165,6 +165,11 @@
     <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
+    <ClCompile Include="Tests\CPU_Tests.cpp" />
+    <ClCompile Include="Tests\Decoder_Tests.cpp" />
+    <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
+    <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
+    <ClCompile Include="Tests\Random_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\BitUtils.h" />
@@ -191,6 +196,11 @@
     <ClInclude Include="Memory\MemoryInterface.h" />
     <ClInclude Include="Memory\TestMemory.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tests\cpu_test1_100.inc" />
+    <None Include="Tests\cpu_test1_350.inc" />
+    <None Include="Tests\simple_adc_tests.inc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
