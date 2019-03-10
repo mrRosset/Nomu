@@ -161,6 +161,7 @@
     <ClCompile Include="deps\include\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="deps\include\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="deps\include\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Gui\Gui.cpp" />
     <ClCompile Include="Loader\E32ImageLoader.cpp" />
     <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="CPU\Tharm\Utils.h" />
     <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
     <ClInclude Include="deps\include\catch\catch.hpp" />
+    <ClInclude Include="Gui\Gui.h" />
     <ClInclude Include="HLE\E32Image.h" />
     <ClInclude Include="HLE\E32Std.h" />
     <ClInclude Include="HLE\TRomImage.h" />

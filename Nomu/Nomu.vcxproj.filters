@@ -27,6 +27,7 @@
     <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
     <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
     <ClCompile Include="Tests\Random_Tests.cpp" />
+    <ClCompile Include="Gui\Gui.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\include\catch\catch.hpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="CPU\Tharm\Utils.h" />
     <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
     <ClInclude Include="CPU\CPU_Interface.h" />
+    <ClInclude Include="Gui\Gui.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\cpu_test1_100.inc" />
