@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)deps\lib64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir)deps\include;$(IncludePath)</IncludePath>
@@ -79,7 +79,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)deps\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)deps\lib64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)deps\lib32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)deps\include;$(IncludePath)</IncludePath>
@@ -110,6 +110,7 @@
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)deps\lib64</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,6 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common\FileUtils.cpp" />
+    <ClCompile Include="Common\BitUtils.cpp" />
     <ClCompile Include="deps\include\GL\gl3w.c" />
     <ClCompile Include="deps\include\imgui\imgui.cpp" />
     <ClCompile Include="deps\include\imgui\imgui_demo.cpp" />
@@ -148,13 +151,22 @@
     <ClCompile Include="deps\include\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="deps\include\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="deps\include\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Loader\E32ImageLoader.cpp" />
+    <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common\BitUtils.h" />
     <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\FileUtils.h" />
     <ClInclude Include="Common\StringUtils.h" />
     <ClInclude Include="deps\include\catch\catch.hpp" />
+    <ClInclude Include="HLE\E32Image.h" />
+    <ClInclude Include="HLE\E32Std.h" />
+    <ClInclude Include="HLE\TRomImage.h" />
+    <ClInclude Include="Loader\E32ImageLoader.h" />
+    <ClInclude Include="Loader\TRomImageLoader.h" />
     <ClInclude Include="Memory\BootMemory.h" />
     <ClInclude Include="Memory\MemoryConstants.h" />
     <ClInclude Include="Memory\GageMemory.h" />

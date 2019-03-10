@@ -1,4 +1,5 @@
 #include <iostream>
+#include <spdlog/spdlog.h>
 
 #include "Memory/GageMemory.h"
 #include "Symbols/SymbolsManager.h"

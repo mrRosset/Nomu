@@ -10,6 +10,10 @@
     <ClCompile Include="deps\include\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
+    <ClCompile Include="Loader\E32ImageLoader.cpp" />
+    <ClCompile Include="Loader\TRomImageLoader.cpp" />
+    <ClCompile Include="Common\FileUtils.cpp" />
+    <ClCompile Include="Common\BitUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\include\catch\catch.hpp" />
@@ -21,5 +25,12 @@
     <ClInclude Include="Memory\MemoryInterface.h" />
     <ClInclude Include="Memory\MemoryConstants.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />
+    <ClInclude Include="HLE\E32Image.h" />
+    <ClInclude Include="HLE\E32Std.h" />
+    <ClInclude Include="HLE\TRomImage.h" />
+    <ClInclude Include="Common\BitUtils.h" />
+    <ClInclude Include="Loader\E32ImageLoader.h" />
+    <ClInclude Include="Loader\TRomImageLoader.h" />
+    <ClInclude Include="Common\FileUtils.h" />
   </ItemGroup>
 </Project>

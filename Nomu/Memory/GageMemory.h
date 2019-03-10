@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include "Common/StringUtils.h"
+#include "Common/FileUtils.h"
 #include "MemoryInterface.h"
 #include "MemoryConstants.h"
 
@@ -43,25 +44,7 @@ public:
 	}
 
 	void loadRom(std::string& rom_path) override {
-		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
-
-		if (!stream) {
-			throw std::invalid_argument("Failed to open Rom file");
-		}
-
-		u64 length = stream.tellg();
-
-		if (length > rom.size()) {
-			throw std::runtime_error("Rom dump size too big");
-		}
-
-		stream.seekg(0, std::ios::beg);
-
-		if (!stream.read((char*)rom.data(), length))
-		{
-			throw std::runtime_error("Error reading bytes from file");
-		}
-		stream.close();
+		LoadFile(rom_path, rom);
 	}
 
 };
