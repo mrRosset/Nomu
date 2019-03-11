@@ -28,6 +28,8 @@
     <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
     <ClCompile Include="Tests\Random_Tests.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
+    <ClCompile Include="Gui\ControlsWindow.cpp" />
+    <ClCompile Include="Emulator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\include\catch\catch.hpp" />
@@ -55,6 +57,9 @@
     <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
     <ClInclude Include="CPU\CPU_Interface.h" />
     <ClInclude Include="Gui\Gui.h" />
+    <ClInclude Include="Gui\Window.h" />
+    <ClInclude Include="Gui\ControlsWindow.h" />
+    <ClInclude Include="Emulator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\cpu_test1_100.inc" />

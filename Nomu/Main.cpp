@@ -1,9 +1,9 @@
 #include <iostream>
 #include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
-#include "Symbols/SymbolsManager.h"
-#include "Memory/GageMemory.h"
 #include "Gui/Gui.h"
+#include "Emulator.h"
 
 #define CATCH_CONFIG_RUNNER
 #include <catch/catch.hpp>
@@ -19,22 +19,18 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
-	std::cout << "Hello world !" << std::endl;
+	//Setup Console
+	auto console = spdlog::stdout_color_mt("console");
+	// set the log pattern to [HH:MM:SS.nano]
+	spdlog::set_pattern("[%T] [%l] %v");
+	console->info("Start of the emulator");
 
-	GageMemory mem{};
+	Emulator emu;
+	Gui gui("", 1280, 720);
 
-	try {
-		mem.read8(0x39);
+	while (gui.render()) {
+		emu.Run();
 	}
-	catch (std::exception const& e)
-	{
-		std::cerr << "Error : " << e.what() << std::endl;
-	}
 
-	Gui gui("Test"s, 1280, 720);
-
-	while (gui.render());
-
-	std::cin.get();
 	return 0;
 }

@@ -146,6 +146,8 @@
   <ItemGroup>
     <ClCompile Include="Common\FileUtils.cpp" />
     <ClCompile Include="Common\BitUtils.cpp" />
+    <ClCompile Include="Emulator.cpp" />
+    <ClCompile Include="Gui\ControlsWindow.cpp" />
     <ClCompile Include="CPU\Tharm\CPU.cpp" />
     <ClCompile Include="CPU\Tharm\CPU_ARM.cpp" />
     <ClCompile Include="CPU\Tharm\CPU_Thumb.cpp" />
@@ -177,6 +179,8 @@
     <ClInclude Include="Common\Common.h" />
     <ClInclude Include="Common\FileUtils.h" />
     <ClInclude Include="Common\StringUtils.h" />
+    <ClInclude Include="Emulator.h" />
+    <ClInclude Include="Gui\ControlsWindow.h" />
     <ClInclude Include="CPU\CPU_Interface.h" />
     <ClInclude Include="CPU\Tharm\CPU.h" />
     <ClInclude Include="CPU\Tharm\Decoder\Decoder.h" />
@@ -198,6 +202,7 @@
     <ClInclude Include="Memory\MemoryInterface.h" />
     <ClInclude Include="Memory\TestMemory.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />
+    <ClInclude Include="Gui\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\cpu_test1_100.inc" />

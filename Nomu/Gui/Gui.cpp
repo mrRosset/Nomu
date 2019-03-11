@@ -15,7 +15,7 @@ static void glfw_error_callback(int error, const char* description)
 	throw std::runtime_error("Glfw Error " + std::to_string(error) + " : " + description);
 }
 
-Gui::Gui(std::string additional_title, int width, int height)
+Gui::Gui(std::string additional_title, int width, int height) : ctrlWindow()
 {
 	window_width = width;
 	window_height = height;
@@ -69,7 +69,6 @@ Gui::Gui(std::string additional_title, int width, int height)
 bool Gui::render() {
 	bool show_demo_window = true;
 
-	// Main loop
 	if (!glfwWindowShouldClose(window))
 	{
 		// Poll and handle events (inputs, window resize, etc.)
@@ -81,7 +80,8 @@ bool Gui::render() {
 		ImGui::NewFrame();
 
 		// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-		ImGui::ShowDemoWindow(&show_demo_window);
+		//ImGui::ShowDemoWindow(&show_demo_window);
+		ctrlWindow.render();
 
 		// Rendering
 		ImGui::Render();

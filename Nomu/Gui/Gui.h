@@ -3,6 +3,8 @@
 #include <string>
 #include <imgui/imgui.h>
 
+#include "ControlsWindow.h"
+
 struct GLFWwindow;
 
 class Gui
@@ -16,6 +18,8 @@ private:
 	int window_width;
 	int window_height;
 	GLFWwindow* window;
+
+	ControlsWindow ctrlWindow;
 
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 };

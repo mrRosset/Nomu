@@ -7,8 +7,6 @@
 #include "Tharm/Registers.h"
 #include "Symbols/SymbolsManager.h"
 
-enum class CPUState { Stopped, Running, Step };
-
 class CPU_Interface {
 public:
 	MemoryInterface& mem;
