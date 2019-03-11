@@ -15,7 +15,13 @@ static void glfw_error_callback(int error, const char* description)
 	throw std::runtime_error("Glfw Error " + std::to_string(error) + " : " + description);
 }
 
-Gui::Gui(std::string additional_title, int width, int height) : ctrlWindow()
+Gui::Gui(Emulator& emu_, std::string additional_title, int width, int height) :
+	emu(emu_),
+	ctrl_window(emu_, scroll_to_pc, track_pc),
+	mem_nav_window(emu_),
+	reg_window(emu_),
+	fun_window(emu_),
+	dis_window(emu_, scroll_to_pc, track_pc)
 {
 	window_width = width;
 	window_height = height;
@@ -67,8 +73,6 @@ Gui::Gui(std::string additional_title, int width, int height) : ctrlWindow()
 }
 
 bool Gui::render() {
-	bool show_demo_window = true;
-
 	if (!glfwWindowShouldClose(window))
 	{
 		// Poll and handle events (inputs, window resize, etc.)
@@ -81,7 +85,11 @@ bool Gui::render() {
 
 		// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 		//ImGui::ShowDemoWindow(&show_demo_window);
-		ctrlWindow.render();
+		ctrl_window.render();
+		mem_nav_window.render();
+		reg_window.render();
+		fun_window.render();
+		dis_window.render();
 
 		// Rendering
 		ImGui::Render();
@@ -89,6 +97,7 @@ bool Gui::render() {
 		glfwMakeContextCurrent(window);
 		glfwGetFramebufferSize(window, &display_w, &display_h);
 		glViewport(0, 0, display_w, display_h);
+		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 		glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
 		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

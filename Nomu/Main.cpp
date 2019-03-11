@@ -4,6 +4,7 @@
 
 #include "Gui/Gui.h"
 #include "Emulator.h"
+#include "Memory/MemoryConstants.h"
 
 #define CATCH_CONFIG_RUNNER
 #include <catch/catch.hpp>
@@ -26,10 +27,19 @@ int main(int argc, char *argv[])
 	console->info("Start of the emulator");
 
 	Emulator emu;
-	Gui gui("", 1280, 720);
+	Gui gui(emu, "", 1280, 720);
+	emu.cpu->SetPC(ROM_START);
 
+	//Main Loop
 	while (gui.render()) {
-		emu.Run();
+		try {
+			emu.Run();
+		}
+		catch (std::exception const& e)
+		{
+			std::cerr << "Error : " << e.what() << std::endl;
+			emu.state = EmuState::Stopped;
+		}
 	}
 
 	return 0;

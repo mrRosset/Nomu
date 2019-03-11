@@ -30,6 +30,10 @@
     <ClCompile Include="Gui\Gui.cpp" />
     <ClCompile Include="Gui\ControlsWindow.cpp" />
     <ClCompile Include="Emulator.cpp" />
+    <ClCompile Include="Gui\MemNavWindow.cpp" />
+    <ClCompile Include="Gui\RegisterWindow.cpp" />
+    <ClCompile Include="Gui\FunctionWindow.cpp" />
+    <ClCompile Include="Gui\DisassemblyWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\include\catch\catch.hpp" />
@@ -60,6 +64,10 @@
     <ClInclude Include="Gui\Window.h" />
     <ClInclude Include="Gui\ControlsWindow.h" />
     <ClInclude Include="Emulator.h" />
+    <ClInclude Include="Gui\MemNavWindow.h" />
+    <ClInclude Include="Gui\RegisterWindow.h" />
+    <ClInclude Include="Gui\FunctionWindow.h" />
+    <ClInclude Include="Gui\DisassemblyWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\cpu_test1_100.inc" />
