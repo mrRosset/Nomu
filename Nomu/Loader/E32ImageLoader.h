@@ -8,7 +8,7 @@ class GuiMain;
 
 namespace E32ImageLoader
 {
-	void load(E32Image& image, std::string& file_name, MemoryInterface& mem, std::string& lib_folder_path);
+	void load(E32Image& image, std::string file_name, MemoryInterface& mem, std::string& lib_folder_path);
 	void parse(std::string& path, E32Image& image);
 	void parseHeader(E32Image& image);
 	void parseIAT(E32Image& image);

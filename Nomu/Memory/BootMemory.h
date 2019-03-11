@@ -36,7 +36,7 @@ public:
 	}
 
 	void loadRom(std::string& rom_path) override {
-		LoadFile(rom_path, rom);
+		LoadFileInto(rom_path, rom);
 	}
 
 };

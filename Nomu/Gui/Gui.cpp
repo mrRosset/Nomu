@@ -65,7 +65,7 @@ Gui::Gui(Emulator& emu_, std::string additional_title, int width, int height) :
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;  // Enable Keyboard Controls
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;   // Enable Gamepad Controls
-	io.IniFilename = nullptr;
+	//io.IniFilename = nullptr;
 
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
