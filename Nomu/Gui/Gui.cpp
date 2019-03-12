@@ -59,6 +59,10 @@ Gui::Gui(Emulator& emu_, std::string additional_title, int width, int height) :
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1); // Enable vsync
 
+	//center windows
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	glfwSetWindowPos(window, (mode->width - window_width) / 2, (mode->height - window_height) / 2);
+
 	if (gl3wInit()) {
 		throw std::runtime_error("Error in gl3wInit");
 	}
