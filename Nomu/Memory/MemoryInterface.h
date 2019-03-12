@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include "Common/Common.h"
 
 class MemoryInterface {
@@ -9,6 +10,8 @@ public:
 	inline virtual u8 read8(u32 address) = 0;
 	inline virtual void write8(u32 address, u8 value) = 0;
 	inline virtual u32 allocateRam(u32 size) = 0;
+	inline virtual std::vector<u8>& getDisplayMem() = 0;
+	inline virtual u32 getDisplayMemBaseAddress() = 0;
 
 	//TODO: Should it be part of memory ?
 	virtual void loadRom(std::string& rom_path) {}

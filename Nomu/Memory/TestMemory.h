@@ -29,4 +29,12 @@ public:
 		return RAM_START + ram_cursor;
 	}
 
+	std::vector<u8>& getDisplayMem() override {
+		return ram;
+	}
+
+	u32 getDisplayMemBaseAddress() override {
+		return 0;
+	}
+
 };

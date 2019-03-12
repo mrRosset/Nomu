@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <imgui/imgui_memory_editor.h>
 
 #include "ControlsWindow.h"
 #include "MemNavWindow.h"
@@ -8,6 +9,7 @@
 #include "FunctionWindow.h"
 #include "DisassemblyWindow.h"
 
+struct MemoryEditor;
 struct GLFWwindow;
 class Emulator;
 
@@ -29,6 +31,7 @@ private:
 	RegisterWindow reg_window;
 	FunctionWindow fun_window;
 	DisassemblyWindow dis_window;
+	MemoryEditor mem_window;
 
 	Emulator& emu;
 };

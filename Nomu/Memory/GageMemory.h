@@ -47,4 +47,11 @@ public:
 		LoadFileInto(rom_path, rom);
 	}
 
+	std::vector<u8>& getDisplayMem() override {
+		return ram;
+	}
+
+	u32 getDisplayMemBaseAddress() override {
+		return RAM_START;
+	}
 };

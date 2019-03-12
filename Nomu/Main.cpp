@@ -17,7 +17,7 @@ using namespace std::string_literals;
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path) 
 {
 	Emulator emu;
-	Gui gui(emu, "", 1280, 720);
+	Gui gui(emu, "", 1200, 950);
 	emu.cpu->SetPC(ROM_START);
 	emu.LoadRom(rom_path);
 	emu.LoadApp(app_path, lib_folder_path);

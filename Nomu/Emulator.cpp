@@ -37,7 +37,8 @@ void Emulator::LoadApp(std::string& app_path, std::string& lib_folder_path)
 	E32ImageLoader::parse(app_path, image);
 	E32ImageLoader::load(image, extract_filename(app_path), *mem, lib_folder_path);
 
-	cpu->SetPC(image.header->code_base_address + image.code_section.export_directory[0]);
+	cpu->SetPC(image.header->code_base_address + image.header->entry_point_offset);
+	//cpu->SetPC(image.header->code_base_address + image.code_section.export_directory[0]);
 }
 
 

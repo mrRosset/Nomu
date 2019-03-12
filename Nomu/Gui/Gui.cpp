@@ -1,10 +1,12 @@
 #include "Gui.h"
 
 #include "Common/Common.h"
+#include "Emulator.h"
 
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
+#include <imgui/imgui_memory_editor.h>
 #include <stdio.h>
 
 #include <GL/gl3w.h>
@@ -21,7 +23,8 @@ Gui::Gui(Emulator& emu_, std::string additional_title, int width, int height) :
 	mem_nav_window(emu_),
 	reg_window(emu_),
 	fun_window(emu_),
-	dis_window(emu_, scroll_to_pc, track_pc)
+	dis_window(emu_, scroll_to_pc, track_pc),
+	mem_window()
 {
 	window_width = width;
 	window_height = height;
@@ -90,6 +93,7 @@ bool Gui::render() {
 		reg_window.render();
 		fun_window.render();
 		dis_window.render();
+		mem_window.DrawWindow("Memory", emu.mem->getDisplayMem().data(), emu.mem->getDisplayMem().size(), emu.mem->getDisplayMemBaseAddress());
 
 		// Rendering
 		ImGui::Render();
