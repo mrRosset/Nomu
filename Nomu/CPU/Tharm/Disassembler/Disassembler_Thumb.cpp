@@ -1,5 +1,6 @@
 #include "Disassembler.h"
-#include "../Utils.h"
+#include "CPU/Tharm/Utils.h"
+#include "Common/StringUtils.h"
 
 
 std::string Disassembler::Disassemble(IR_Thumb& ir) {
@@ -84,7 +85,7 @@ std::string Disassembler::Disassemble(IR_Thumb& ir) {
 	case TInstructions::PUSH: return "push " + Disassemble_Small_Reg_List(ir.operand1, !!ir.operand2, false);
 
 	//Exception Generating Instructions
-	case TInstructions::SWI: return "swi #" + std::to_string(ir.operand1);
+	case TInstructions::SWI: return "swi #" + int_to_hex(ir.operand1);
 	}
 
 	throw std::runtime_error("Could not disassemble Thumb instruction");

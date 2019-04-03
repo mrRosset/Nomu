@@ -1,6 +1,6 @@
 #include <string>
 #include "Decoder.h"
-#include "../Utils.h"
+#include "CPU/Tharm/Utils.h"
 
 
 void Decoder::Decode(IR_ARM & ir, u32 instr) {

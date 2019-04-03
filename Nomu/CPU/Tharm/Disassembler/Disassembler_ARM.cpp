@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include "Disassembler.h"
-#include "../Utils.h"
-
+#include "CPU/Tharm/Utils.h"
+#include "Common/StringUtils.h"
 
 
 std::string Disassembler::Disassemble(IR_ARM & ir) {
@@ -84,7 +84,7 @@ std::string Disassembler::Disassemble(IR_ARM & ir) {
 	case AInstructions::SWPB: return "swpb" + Disassemble_Cond(ir.cond) + " " + Disassemble_Reg(ir.operand2) + ", " + Disassemble_Reg(ir.operand1) + ", [" + Disassemble_Reg(ir.operand3) + "]";
 
 	//Exception Generating
-	case AInstructions::SWI: return "swi" + Disassemble_Cond(ir.cond) + " #" + std::to_string(ir.operand1);
+	case AInstructions::SWI: return "swi" + Disassemble_Cond(ir.cond) + " #" + int_to_hex(ir.operand1);
 
 	//Coprocessor
 	case AInstructions::CDP: return "cdp" + Disassemble_Cond(ir.cond) + " p" + std::to_string(ir.operand3 & 0xF) + ", " + std::to_string(ir.operand4) + ", " + Disassemble_Reg((ir.operand3 >> 4) & 0xF) + ", c" + std::to_string((ir.operand3 >> 8) & 0xF) + ", c" + std::to_string(ir.operand1) + ", " + std::to_string(ir.operand2);

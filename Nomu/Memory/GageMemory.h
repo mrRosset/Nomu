@@ -27,14 +27,14 @@ public:
 		if (address >= USER_DATA_START && address <= USER_DATA_END) return user_data[address - USER_DATA_START];
 		else if (address >= ROM_START && address <= ROM_END) return rom[address - ROM_START];
 		else if (address >= RAM_START && address <= RAM_END) return ram[address - RAM_START];
-		else throw std::invalid_argument("read to unmapped memory: " + int_to_hex(address));
+		else throw std::invalid_argument("read to unmapped memory: " + int_to_full_hex(address));
 	}
 
 	inline void write8(u32 address, u8 value) override {
 		if (address >= USER_DATA_START && address <= USER_DATA_END) user_data[address - USER_DATA_START] = value;
 		else if (address >= ROM_START && address <= ROM_END) rom[address - ROM_START] = value;
 		else if (address >= RAM_START && address <= RAM_END) ram[address - RAM_START] = value;
-		else throw std::invalid_argument("write to unmapped memory: " + int_to_hex(address));
+		else throw std::invalid_argument("write to unmapped memory: " + int_to_full_hex(address));
 	}
 
 	u32 allocateRam(u32 size) override {

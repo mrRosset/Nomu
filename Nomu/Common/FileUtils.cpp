@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "FileUtils.h"
 
@@ -49,7 +50,7 @@ void LoadFile(std::string& rom_path, std::vector<u8>& data) {
 	stream.close();
 }
 
-std::string extract_filename(std::string filepath) {
+std::string extract_filename(const std::string& filepath) {
 	auto pos = filepath.rfind("\\");
 	if (pos == std::string::npos)
 		pos = -1;

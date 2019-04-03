@@ -14,7 +14,7 @@
 using namespace std::string_literals;
 
 
-void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path) 
+void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path)
 {
 	Emulator emu;
 	Gui gui(emu, "", 1200, 950);

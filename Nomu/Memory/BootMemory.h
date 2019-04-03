@@ -22,13 +22,13 @@ public:
 	inline u8 read8(u32 address) override {
 		if (address < rom.size()) return rom[address];
 		else if (address >= KERNEL_DATA_START && address <= FAKE_KERNAL_DATA_END) return kernel_data[address - KERNEL_DATA_START];
-		else throw std::invalid_argument("Invalid read to unmapped memory: " + int_to_hex(address));
+		else throw std::invalid_argument("Invalid read to unmapped memory: " + int_to_full_hex(address));
 	}
 
 	inline void write8(u32 address, u8 value) override {
 		if (address < rom.size()) rom[address] = value;
 		else if (address >= KERNEL_DATA_START && address <= FAKE_KERNAL_DATA_END) kernel_data[address - KERNEL_DATA_START] = value;
-		else throw std::invalid_argument("Invalid write to unmapped memory: " + int_to_hex(address));
+		else throw std::invalid_argument("Invalid write to unmapped memory: " + int_to_full_hex(address));
 	}
 
 	u32 allocateRam(u32 size) override {
