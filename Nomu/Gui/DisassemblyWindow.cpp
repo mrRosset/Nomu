@@ -3,6 +3,7 @@
 #include "DisassemblyWindow.h"
 #include "CPU/Tharm/Disassembler/Disassembler.h"
 #include "CPU/Tharm/Decoder/Decoder.h"
+#include "Common/UiUtils.h"
 #include "Emulator.h"
 
 void DisassemblyWindow::render() {
@@ -52,16 +53,16 @@ void DisassemblyWindow::render() {
 			//empty line
 			ImGui::Selectable("", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 			ImGui::NextColumn();
-			ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
+			CopyableText("0x%X", cur_address); ImGui::NextColumn();
 			ImGui::Text(""); ImGui::NextColumn();
 			ImGui::Text(""); ImGui::NextColumn();
 
 			//line with function name
 			ImGui::Selectable("", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 			ImGui::NextColumn();
-			ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
+			CopyableText("0x%X", cur_address); ImGui::NextColumn();
 			ImGui::Text(""); ImGui::NextColumn();
-			ImGui::Text(Symbols::getFunctionName(symbol_addr).c_str());  ImGui::NextColumn();
+			CopyableText(Symbols::getFunctionName(symbol_addr).c_str());  ImGui::NextColumn();
 			label_lines += 2;
 			i += 2;
 		}
@@ -84,14 +85,14 @@ void DisassemblyWindow::render() {
 		if (thumb)
 		{
 			try {
-				ImGui::Text("%02X %02X", cpu.mem.read8(cur_address + 1), cpu.mem.read8(cur_address));
+				CopyableText("%02X %02X", cpu.mem.read8(cur_address + 1), cpu.mem.read8(cur_address));
 			}
 			catch (...) {} // when in invalid memory space
 		}
 		else
 		{
 			try {
-				ImGui::Text("%02X %02X %02X %02X", cpu.mem.read8(cur_address + 3), cpu.mem.read8(cur_address + 2), cpu.mem.read8(cur_address + 1), cpu.mem.read8(cur_address));
+				CopyableText("%02X %02X %02X %02X", cpu.mem.read8(cur_address + 3), cpu.mem.read8(cur_address + 2), cpu.mem.read8(cur_address + 1), cpu.mem.read8(cur_address));
 			}
 			catch (...) {} // when in invalid memory space
 		}
@@ -121,7 +122,7 @@ void DisassemblyWindow::render() {
 				text = Disassembler::Disassemble(ir);
 			}
 			catch (...) {}
-			ImGui::Text("%s", text.c_str());
+			CopyableText("%s", text.c_str());
 		}
 
 		ImGui::NextColumn();
@@ -129,10 +130,5 @@ void DisassemblyWindow::render() {
 	}
 
 	clipper.End();
-
-
-
-
-
 	ImGui::End();
 }

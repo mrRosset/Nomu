@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="Common\FileUtils.cpp" />
     <ClCompile Include="Common\BitUtils.cpp" />
+    <ClCompile Include="Common\UiUtils.cpp" />
     <ClCompile Include="Emulator.cpp" />
     <ClCompile Include="Gui\ControlsWindow.cpp" />
     <ClCompile Include="CPU\Tharm\CPU.cpp" />
@@ -180,9 +181,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\BitUtils.h" />
+    <ClInclude Include="Common\ClipboardUtils.h" />
     <ClInclude Include="Common\Common.h" />
     <ClInclude Include="Common\FileUtils.h" />
     <ClInclude Include="Common\StringUtils.h" />
+    <ClInclude Include="Common\UiUtils.h" />
     <ClInclude Include="Emulator.h" />
     <ClInclude Include="Gui\ControlsWindow.h" />
     <ClInclude Include="CPU\CPU_Interface.h" />
