@@ -2,9 +2,11 @@
 
 #include "HLE/E32Image.h"
 #include "CPU/Tharm/CPU.h"
+#include "CPU/Unicorn/CPUnicorn.h"
 #include "Common/FileUtils.h"
 #include "Memory/GageMemory.h"
 #include "Loader/E32ImageLoader.h"
+#include "Symbols/SymbolsManager.h"
 
 Emulator::Emulator()
 {
@@ -39,6 +41,11 @@ void Emulator::LoadApp(std::string& app_path, std::string& lib_folder_path)
 
 	auto dllEntry = image.header->code_base_address + image.header->entry_point_offset;
 	auto mainEntry = image.header->code_base_address + image.code_section.export_directory[0];
+
+	Symbols::addSymbol(dllEntry, "Dll Entry");
+	Symbols::addSymbol(mainEntry, "App Entry");
+
+	cpu->SetReg(Regs::SP, RAM_END);
 
 	//Call one after the other
 	cpu->SetPC(dllEntry);

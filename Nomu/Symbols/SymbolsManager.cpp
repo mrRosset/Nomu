@@ -41,6 +41,10 @@ bool Symbols::hasFunctionName(u32 address) {
 	return symbols.find(address) != symbols.end();
 }
 
+void Symbols::addSymbol(u32 address, std::string symbol) {
+	symbols[address] = symbol;
+}
+
 std::string Symbols::getFunctionName(u32 address) {
 	return symbols[address];
 }
