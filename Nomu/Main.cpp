@@ -24,14 +24,14 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 	//Main Loop
 	while (gui.render()) {
-		try {
+		//try {
 			emu.Run();
-		}
-		catch (std::exception const& e)
+		//}
+		/*catch (std::exception const& e)
 		{
 			std::cerr << "Error : " << e.what() << std::endl;
 			emu.state = EmuState::Stopped;
-		}
+		}*/
 	}
 
 }

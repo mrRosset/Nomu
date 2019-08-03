@@ -13,7 +13,6 @@ public:
 	std::vector<std::string> call_stack;
 	std::vector<std::string> function_trace;
 
-
 	CPU_Interface(MemoryInterface& _mem) : mem(_mem), call_stack(), function_trace() {}
 	virtual ~CPU_Interface() {}
 	

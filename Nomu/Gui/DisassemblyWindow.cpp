@@ -69,7 +69,7 @@ void DisassemblyWindow::render() {
 
 		if (ImGui::Selectable("", cpu.GetPC() == cur_address, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
 		{
-			//emulator.cpu.breakpoint = cur_address;
+			//cpu.breakpoint = cur_address;
 		}
 
 		/*if (emulator.cpu.breakpoint == cur_address)
@@ -110,7 +110,7 @@ void DisassemblyWindow::render() {
 				text = Disassembler::Disassemble(ir);
 			}
 			catch (...) {}
-			ImGui::Text("%s", text.c_str());
+			CopyableText("%s", text.c_str());
 		}
 		else
 		{
