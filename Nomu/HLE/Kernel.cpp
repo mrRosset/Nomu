@@ -17,6 +17,8 @@ void Kernel::ExecutiveCall(Emulator& emu, u32 number) {
 
 	switch (number) {
 	case 0x6C: User_Heap(emu); break;
+	case 0x8D: User_LockedInc(emu); break;
+	case 0x8E: User_LockedDec(emu); break;
 
 	default:
 
@@ -45,5 +47,22 @@ void Kernel::User_Heap(Emulator& emu) {
 
 	emu.ker_cpu->call_stack.push_back(int_to_full_hex(emu.ker_cpu->GetPC()));
 
+	//return value
+	emu.cpu->SetReg(0, RHeap_ptr);
+
 	emu.SetMode(Mode::Kernel);
+}
+
+void Kernel::User_LockedDec(Emulator& emu) {
+	//TODO: Change if multithreading is implemented
+	u32 value = emu.mem->read32(emu.cpu->GetReg(0));
+	emu.mem->write32(emu.cpu->GetReg(0), value - 1);
+	emu.cpu->SetReg(0, value);
+}
+
+void Kernel::User_LockedInc(Emulator& emu) {
+	//TODO: Change if multithreading is implemented
+	u32 value = emu.mem->read32(emu.cpu->GetReg(0));
+	emu.mem->write32(emu.cpu->GetReg(0), value + 1);
+	emu.cpu->SetReg(0, value);
 }

@@ -28,9 +28,9 @@ void DisassemblyWindow::render() {
 
 	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
 
-	/*ImDrawList* draw_list = ImGui::GetWindowDrawList();
+	ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	ImColor breakpoint_fill = ImColor(ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
-	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));*/
+	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
 	ImVec2 screen_cursor = ImGui::GetCursorScreenPos();
 
 	// Perform scrolling, if necessary
@@ -69,15 +69,15 @@ void DisassemblyWindow::render() {
 
 		if (ImGui::Selectable("", cpu.GetPC() == cur_address, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
 		{
-			//cpu.breakpoint = cur_address;
+			cpu.breakpoint = cur_address;
 		}
 
-		/*if (emulator.cpu.breakpoint == cur_address)
+		if (cpu.breakpoint == cur_address)
 		{
-		// We use custom rendering for drawing the breakpoint
-		draw_list->AddCircleFilled(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_fill);
-		draw_list->AddCircle(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_border);
-		}*/
+			// We use custom rendering for drawing the breakpoint
+			draw_list->AddCircleFilled(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_fill);
+			draw_list->AddCircle(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_border);
+		}
 
 		ImGui::NextColumn();
 		ImGui::Text("0x%X", cur_address); ImGui::NextColumn();

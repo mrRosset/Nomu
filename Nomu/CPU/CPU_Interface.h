@@ -13,13 +13,17 @@ public:
 	std::vector<std::string> call_stack;
 	std::vector<std::string> function_trace;
 
-	CPU_Interface(MemoryInterface& _mem) : mem(_mem), call_stack(), function_trace() {}
+	u32 breakpoint;
+
+	CPU_Interface(MemoryInterface& _mem) : mem(_mem), call_stack(), function_trace(), breakpoint(0) {}
 	virtual ~CPU_Interface() {}
 	
 	virtual void Step() {
+
 		if (Symbols::hasFunctionName(GetPC())) {
 			function_trace.push_back(Symbols::getFunctionNameOrElse(GetPC()));
 		}
+
 		ExecuteNextInstruction();
 	}
 

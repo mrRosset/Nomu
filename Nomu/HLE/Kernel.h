@@ -13,4 +13,6 @@ namespace Kernel {
 	void ExecutiveCall(Emulator& emu, u32 number);
 
 	void User_Heap(Emulator& emu);
+	void User_LockedDec(Emulator& emu);
+	void User_LockedInc(Emulator& emu);
 }

@@ -31,6 +31,10 @@ void Emulator::Run()
 		SetMode(Mode::User);
 	}
 
+	if (state == EmuState::Running && cpu->GetPC() == cpu->breakpoint) {
+		state = EmuState::Stopped;
+	}
+
 	switch (state) {
 
 	case EmuState::Step:

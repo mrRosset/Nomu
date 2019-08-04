@@ -20,7 +20,7 @@ public:
 		user_data(USER_DATA_END - USER_DATA_START + 1), 
 		rom(ROM_END - ROM_START + 1), 
 		ram(RAM_END - RAM_START + 1) {
-		ram_cursor = 15'0000;
+		ram_cursor = 0;
 	}
 
 	inline u8 read8(u32 address) override {
@@ -38,9 +38,9 @@ public:
 	}
 
 	u32 allocateRam(u32 size) override {
-		//TODO: is it an increasing or decreasing heap ?
+		u32 result = RAM_START + ram_cursor;
 		ram_cursor += size;
-		return RAM_START + ram_cursor;
+		return result;
 	}
 
 	void loadRom(std::string& rom_path) override {
