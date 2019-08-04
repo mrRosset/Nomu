@@ -7,12 +7,18 @@
 #include "Memory/GageMemory.h"
 #include "Loader/E32ImageLoader.h"
 #include "Symbols/SymbolsManager.h"
+#include "HLE/Kernel.h"
 
 Emulator::Emulator()
 {
 	mem = std::make_unique<GageMemory>();
 	cpu = std::make_unique<CPU>(*mem);
+	ker_cpu = std::make_unique<CPU>(*mem);
 	state = EmuState::Stopped;
+
+	cpu->swi_callback = [&](u32 number) {
+		Kernel::ExecutiveCall(*this, number);
+	};
 }
 
 void Emulator::Run() {

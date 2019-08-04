@@ -17,6 +17,7 @@ public:
 
 	EmuState state;
 	std::unique_ptr<CPU_Interface> cpu;
+	std::unique_ptr<CPU_Interface> ker_cpu;
 	std::unique_ptr<MemoryInterface> mem;
 };
 

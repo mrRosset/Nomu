@@ -168,6 +168,7 @@
     <ClCompile Include="Gui\FunctionWindow.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
     <ClCompile Include="Gui\RegisterWindow.cpp" />
+    <ClCompile Include="HLE\Kernel.cpp" />
     <ClCompile Include="Loader\E32ImageLoader.cpp" />
     <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Gui\RegisterWindow.h" />
     <ClInclude Include="HLE\E32Image.h" />
     <ClInclude Include="HLE\E32Std.h" />
+    <ClInclude Include="HLE\Kernel.h" />
     <ClInclude Include="HLE\TRomImage.h" />
     <ClInclude Include="Loader\E32ImageLoader.h" />
     <ClInclude Include="Loader\TRomImageLoader.h" />

@@ -35,6 +35,7 @@
     <ClCompile Include="Gui\FunctionWindow.cpp" />
     <ClCompile Include="Gui\DisassemblyWindow.cpp" />
     <ClCompile Include="Common\UiUtils.cpp" />
+    <ClCompile Include="HLE\Kernel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\include\catch\catch.hpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="Gui\DisassemblyWindow.h" />
     <ClInclude Include="Common\ClipboardUtils.h" />
     <ClInclude Include="Common\UiUtils.h" />
+    <ClInclude Include="HLE\Kernel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\cpu_test1_100.inc" />
