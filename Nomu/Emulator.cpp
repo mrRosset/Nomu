@@ -12,17 +12,27 @@
 Emulator::Emulator()
 {
 	mem = std::make_unique<GageMemory>();
-	cpu = std::make_unique<CPU>(*mem);
+	user_cpu = std::make_unique<CPU>(*mem);
 	ker_cpu = std::make_unique<CPU>(*mem);
-	state = EmuState::Stopped;
 
+	state = EmuState::Stopped;
+	mode = Mode::User;
+	cpu = user_cpu.get();
+	
 	cpu->swi_callback = [&](u32 number) {
 		Kernel::ExecutiveCall(*this, number);
 	};
 }
 
-void Emulator::Run() {
+void Emulator::Run()
+{
+	if (mode == Mode::Kernel && cpu->GetPC() == 0) {
+		//We ended our little tour into the kernel and can go back to userland
+		SetMode(Mode::User);
+	}
+
 	switch (state) {
+
 	case EmuState::Step:
 		cpu->Step();
 		state = EmuState::Stopped;
@@ -33,6 +43,21 @@ void Emulator::Run() {
 		break;
 	}
 }
+
+void Emulator::SetMode(Mode new_mode)
+{
+	mode = new_mode;
+
+	switch (mode) {
+	case Mode::User:
+		cpu = user_cpu.get();
+		break;
+	case Mode::Kernel:
+		cpu = ker_cpu.get();
+		break;
+	}
+}
+
 
 void Emulator::LoadRom(std::string& rom_path)
 {

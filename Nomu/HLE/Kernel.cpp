@@ -1,5 +1,5 @@
 #include "Kernel.h"
-#include "E32Std.h";
+#include "E32Std.h"
 #include "Emulator.h"
 #include "Common/StringUtils.h"
 
@@ -27,15 +27,16 @@ void Kernel::ExecutiveCall(Emulator& emu, u32 number) {
 
 void Kernel::User_Heap(Emulator& emu) {
 
-	if (RHeap_ptr) {
+	if (RHeap_ptr != 0) {
 		emu.cpu->SetReg(0, RHeap_ptr);
 		return;
 	}
 
 	RHeap_ptr = emu.mem->allocateRam(sizeof(RHeap));
 
+	//TODO: Don't hardcode this
 	//Corresponds to UserHeap::FixedHeap(void *, int)
-	emu.ker_cpu->SetPC(0x503B1754); //TODO: not hardcode this.
+	emu.ker_cpu->SetPC(0x503B1754);
 	emu.ker_cpu->SetReg(Regs::LR, 0);
 	emu.ker_cpu->SetReg(Regs::SP, emu.cpu->GetReg(Regs::SP));
 
@@ -43,4 +44,6 @@ void Kernel::User_Heap(Emulator& emu) {
 	emu.ker_cpu->SetReg(1, 1052672); //Found in a test on the hardware
 
 	emu.ker_cpu->call_stack.push_back(int_to_full_hex(emu.ker_cpu->GetPC()));
+
+	emu.SetMode(Mode::Kernel);
 }
