@@ -12,7 +12,7 @@
 Emulator::Emulator()
 {
 	mem = std::make_unique<GageMemory>();
-	user_cpu = std::make_unique<CPU>(*mem);
+	user_cpu = std::make_unique<CPUnicorn>(*(GageMemory*)mem.get());
 	ker_cpu = std::make_unique<CPU>(*mem);
 
 	state = EmuState::Stopped;
@@ -80,7 +80,7 @@ void Emulator::LoadApp(std::string& app_path, std::string& lib_folder_path)
 	Symbols::addSymbol(dllEntry, "Dll Entry");
 	Symbols::addSymbol(mainEntry, "App Entry");
 
-	cpu->SetReg(Regs::SP, RAM_END);
+	cpu->SetReg(Regs::SP, RAM_END+1);
 
 	//Call one after the other
 	cpu->SetPC(dllEntry);
